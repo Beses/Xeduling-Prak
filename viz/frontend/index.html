@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Tool Nutzung Dashboard</title>
+        <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+
+        <div id="sidebar">
+            <h1>Tool Nutzung</h1>
+            <div>
+                <label>Start</label>
+                <input type="date" id="start-date"/>
+            </div>
+            <div>
+                <label>Ende</label>
+                <input type="date" id="end-date"/>
+            </div>
+            <div>
+                <label>Maschine auswählen</label>
+                <select id="machine-select"></select>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="uebersicht">Tool Nutzung</button>
+                <button class="tab-btn" data-tab="revolver">Revolver Simulation</button>
+                <button class="tab-btn" data-tab="ruestzeit">Rüstzeit Analyse</button>
+                <button class="tab-btn" data-tab="vergleich">Vergleich</button>
+            </div>
+
+            <div id="tab-uebersicht" class="tab-panel active">
+<!--                <h2>Meist genutzte Tools (alle Maschinen)</h2>-->
+                <div id="chart-top-tools-all" class="chart"></div>
+
+                <h2>Werkzeug-Revolver Simulation</h2>
+                <p>Simuliert die tatsächliche Werkzeugbelegung im Revolver pro Maschine, inklusive Kapazitätsgrenze und
+                    FIFO-Ersetzung. Wird per <code>build_revolver_report.py</code> offline erzeugt.</p>
+                <div id="warnings-box"></div>
+
+<!--                <h2>Rüstzeit vs. Anzahl Werkzeugwechsel (alle Maschinen)</h2>-->
+                <div id="chart-ruestzeit-all" class="chart"></div>
+
+                <h3>Warum landen Arbeitsschritte nicht in zeiten_table?</h3>
+                <pre class="kategorisierung" id="kategorisierung"></pre>
+
+                <h2>Vergleich</h2>
+                <div id="table-vergleich-all"></div>
+            </div>
+
+            <div id="tab-revolver" class="tab-panel">
+                <h2 id="werkzeugverlauf-title">Werkzeugverlauf</h2>
+                <div id="table-werkzeugverlauf"></div>
+
+                <h2 id="top10-title">Top 10 Tools</h2>
+                <div id="chart-top10" class="chart"></div>
+
+                <h2 id="combos-title">Top Toolkombinationen</h2>
+                <label>Anzahl Toolkombinationen: <span id="combo-count-label">10</span></label>
+                <input type="range" id="combo-slider" min="5" max="20" value="10"/>
+                <div id="chart-top-combos" class="chart"></div>
+
+                <h2>Werkzeug-Revolver Simulation</h2>
+                <div id="chart-revolver-sim" class="chart"></div>
+            </div>
+
+            <div id="tab-ruestzeit" class="tab-panel">
+                <h2 id="ruestzeit-title">Rüstzeit vs. Anzahl Werkzeugwechsel</h2>
+                <div class="row">
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="exclude-zero-ruestzeit" checked/>
+                        <label style="margin:0">Rüstzeit = 0 ausschließen</label>
+                    </div>
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="exclude-zero-changes" checked/>
+                        <label style="margin:0">Werkzeugwechsel = 0 ausschließen</label>
+                    </div>
+                </div>
+                <div id="ruestzeit-content"></div>
+            </div>
+
+            <div id="tab-vergleich" class="tab-panel">
+                <h2 id="vergleich-title">Vergleich</h2>
+                <div id="table-vergleich"></div>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
+</html>
