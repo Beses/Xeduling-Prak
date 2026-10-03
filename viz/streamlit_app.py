@@ -417,9 +417,9 @@ def main():
     default_end_date = max_date
 
     date_range = st.sidebar.date_input("Timeframe", value=(default_start_date, default_end_date), min_value=min_date,
-                                       max_value=max_date, help="Hilfe")
+                                       max_value=max_date, help="Hier die gewünschte Zeitspanne auswählen")
     selection = st.sidebar.selectbox("Maschine auswählen", machine_options,
-                                     index=machine_options.index(default_machine), help="Maschine")
+                                     index=machine_options.index(default_machine), help="Die verfügbaren Maschinen für den ausgewählten Zeitraum")
 
     if isinstance(date_range, tuple) and len(date_range) == 2:
         start_date, end_date = date_range
@@ -456,7 +456,7 @@ def main():
 
     # --- Tabs ---
     tab_uebersicht, tab_revolver, tab_ruestzeit, tab_vergleich = st.tabs(
-        ["Tool Nutzung", "Revolver Simulation", "Rüstzeit Analyse", "Vergleich"]
+        ["Übersicht (alle Maschinen)", "Revolver Simulation", "Rüstzeit Analyse", "Vergleich"]
     )
 
     with tab_uebersicht:

@@ -10,7 +10,7 @@
     <body>
 
         <div id="sidebar">
-            <h1>Tool Nutzung</h1>
+            <h1 style="padding-top: 68px !important">&nbsp;</h1>
             <div>
                 <label>Start</label>
                 <input type="date" id="start-date"/>
@@ -26,8 +26,9 @@
         </div>
 
         <div id="main">
+            <p style="font-size: 2.4rem; font-weight: bolder">Tool Nutzung Dashboard</p>
             <div class="tabs">
-                <button class="tab-btn active" data-tab="uebersicht">Tool Nutzung</button>
+                <button class="tab-btn active" data-tab="uebersicht">Übersicht (alle Maschinen)</button>
                 <button class="tab-btn" data-tab="revolver">Revolver Simulation</button>
                 <button class="tab-btn" data-tab="ruestzeit">Rüstzeit Analyse</button>
                 <button class="tab-btn" data-tab="vergleich">Vergleich</button>
@@ -53,10 +54,10 @@
             </div>
 
             <div id="tab-revolver" class="tab-panel">
-                <h2 id="werkzeugverlauf-title">Werkzeugverlauf</h2>
+                <h2 id="werkzeugverlauf-title" style="display: none !important">Werkzeugverlauf</h2>
                 <div id="table-werkzeugverlauf"></div>
 
-                <h2 id="top10-title">Top 10 Tools</h2>
+                <h2 id="top10-title" style="display: none !important">Top 10 Tools</h2>
                 <div id="chart-top10" class="chart"></div>
 
                 <h2 id="combos-title">Top Toolkombinationen</h2>
@@ -84,7 +85,7 @@
             </div>
 
             <div id="tab-vergleich" class="tab-panel">
-                <h2 id="vergleich-title">Vergleich</h2>
+                <h2 id="vergleich-title" style="display: none !important">Vergleich</h2>
                 <div id="table-vergleich"></div>
             </div>
         </div>
